@@ -78,7 +78,7 @@ Because fine-tuning a model takes some time to complete, you'll start the fine-t
 
 While you wait for the fine-tuning job to complete, let's chat with a *gpt-4.1* foundation model to assess how it performs.
 
-1. In the left pane, select **Models** and then select the **gpt-4.1** base model you deployed previously.
+1. In the left pane, select **Deployments** and then select the **gpt-4.1** base model you deployed previously.
 1. In the chat pane, enter the prompt `What can you do?` and view the response.
 
     The answers may be fairly generic. Remember we want to create a chat application that inspires people to travel.
@@ -136,7 +136,7 @@ When your fine-tuned model is ready, you can test it like you tested your deploy
 
 1. In the pane on the left, select **Fine-tune** and review the status of the fine-tuning job you started earlier.
 1. Select the job to view its details. You can use the **Logs** tab to review the fine-tuning tasks that have been performed so far.
-1. When fine-tuning is complete, and the model has been automatically deployed, view the **Models** page to verify that it is listed.
+1. When fine-tuning is complete, and the model has been automatically deployed, view the **Deployments** page to verify that it is listed.
 
     > **Tip**: If automatic deployment fails, select the completed fine-tuning job and deploy the model from there.
 1. Select the fine-tuned model to open it in the model playground.

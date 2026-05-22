@@ -54,7 +54,7 @@ Now deploy a model that you'll use in your chat application.
 
 Before developing a chat application, let's explore how the model responds in the playground. This will help you understand why grounding data matters.
 
-1. After deploying your model, you should be in the playground with that model selected. If not, select **Build** in the top menu bar, then select **Models** on the left, and then select the model you deployed.
+1. After deploying your model, you should be in the playground with that model selected. If not, select **Build** in the top menu bar, then select **Deployments** on the left, and then select the model you deployed.
 1. In the model playground, in the pane on the left, ensure that your **gpt-4.1** model is selected.
 
 1. In the **Instructions** field, enter the following prompt:
