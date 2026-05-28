@@ -122,7 +122,7 @@ As a developer, you may spend some time working in the Foundry portal; but you'r
 
     The extension may take a minute or so to install.
 
-1. After installing the extension, select the **AI Toolkit** page in the left navigation bar; and wait for it to load.
+1. After installing the extension, select the **Foundry Toolkit** page in the left navigation bar; and wait for it to load.
 
     ![Screenshot of the Foundry Toolkit Visual Studio Code extension.](../media/foundry-vs-extension.png)
 
