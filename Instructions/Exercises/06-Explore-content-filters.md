@@ -5,6 +5,7 @@ lab:
   level: 300
   duration: 25
   islab: true
+  status: 'released'
 ---
 
 # Apply guardrails to prevent the output of harmful content

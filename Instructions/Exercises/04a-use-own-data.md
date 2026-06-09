@@ -5,6 +5,7 @@ lab:
   level: 300
   duration: 30
   islab: true
+  status: 'released'
 ---
 
 # Create a generative AI app that uses tools
