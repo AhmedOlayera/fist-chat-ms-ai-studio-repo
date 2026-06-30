@@ -1,4 +1,8 @@
 import os
+# import namespaces
+from openai import OpenAI
+from azure.identity import DefaultAzureCredential
+
 
 # Add references
 
@@ -6,7 +10,7 @@ import os
 def main(): 
 
     # Clear the console
-    os.system('cls' if os.name=='nt' else 'clear')
+    os.system('cls' cls if os.name=='nt' else 'clear')
         
     try: 
     
@@ -17,6 +21,14 @@ def main():
         
         # Initialize the project client
         
+token_provider = get_bearer_token_provider(
+     DefaultAzureCredential(), "https://ai.azure.com/.default"
+)
+    
+openai_client = OpenAI(
+     base_url=azure_openai_endpoint,
+     api_key=token_provider
+)
 
         ## Get a chat client
 
@@ -35,7 +47,21 @@ def main():
                 continue
             
             # Get a chat completion
-
+# Get a response
+completion = openai_client.chat.completions.create(
+     model=model_deployment,
+     messages=[
+         {
+             "role": "system",
+             "content": "You are a helpful AI assistant that answers questions and provides information."
+         },
+         {
+             "role": "user",
+             "content": input_text
+         }
+     ]
+)
+print(completion.choices[0].message.content)
 
     except Exception as ex:
         print(ex)
