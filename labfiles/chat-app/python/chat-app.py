@@ -1,8 +1,8 @@
 import os
 # import namespaces
 from openai import OpenAI
-from azure.identity import DefaultAzureCredential
-
+from azure.identity import DefaultAzureCredential, get_bearer_token_provider
+from dotenv import load_dotenv
 
 # Add references
 
@@ -10,25 +10,25 @@ from azure.identity import DefaultAzureCredential
 def main(): 
 
     # Clear the console
-    os.system('cls' cls if os.name=='nt' else 'clear')
+    os.system('cls' if os.name=='nt' else 'clear')
         
     try: 
     
         # Get configuration settings 
         load_dotenv()
-        project_connection = os.getenv("PROJECT_CONNECTION")
-        model_deployment =  os.getenv("MODEL_DEPLOYMENT")
+        project_connection = os.getenv("https://olayeraahmed-2710proj-resource.openai.azure.com/openai/v1")
+        model_deployment =  os.getenv("gpt4.1")
         
         # Initialize the project client
         
-token_provider = get_bearer_token_provider(
+    token_provider = get_bearer_token_provider(
      DefaultAzureCredential(), "https://ai.azure.com/.default"
-)
+    )
     
-openai_client = OpenAI(
+     openai_client = OpenAI(
      base_url=azure_openai_endpoint,
      api_key=token_provider
-)
+    )
 
         ## Get a chat client
 
@@ -48,7 +48,7 @@ openai_client = OpenAI(
             
             # Get a chat completion
 # Get a response
-completion = openai_client.chat.completions.create(
+     completion = openai_client.chat.completions.create(
      model=model_deployment,
      messages=[
          {
