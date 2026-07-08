@@ -1,0 +1,16 @@
+# Ignore Python virtual environment
+.venv/
+
+# Ignore env files
+labfiles/chat-app/python/.env
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store

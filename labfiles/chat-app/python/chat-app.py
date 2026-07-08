@@ -9,7 +9,8 @@ def main():
 
     try:
         # Load configuration settings
-        load_dotenv()
+        env_path = os.path.join(os.path.dirname(__file__), '.env')
+        load_dotenv(env_path)
         project_connection = os.getenv("AZURE_OPENAI_ENDPOINT")
         model_deployment = os.getenv("MODEL_DEPLOYMENT")
 
