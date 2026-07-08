@@ -1,6 +1,6 @@
 import os
-from openai import OpenAI
-from azure.identity import DefaultAzureCredential, get_bearer_token_provider
+from openai import AzureOpenAI
+from azure.identity import DefaultAzureCredential
 from dotenv import load_dotenv
 
 
@@ -19,13 +19,10 @@ def main():
         if not model_deployment:
             raise ValueError("MODEL_DEPLOYMENT environment variable is not set")
 
-        token_provider = get_bearer_token_provider(
-            DefaultAzureCredential(), "https://ai.azure.com/.default"
-        )
-
-        openai_client = OpenAI(
-            base_url=project_connection,
-            api_key=token_provider,
+        openai_client = AzureOpenAI(
+            api_version="2024-08-01-preview",
+            azure_endpoint=project_connection,
+            azure_ad_token_provider=lambda: DefaultAzureCredential().get_token("https://cognitiveservices.azure.com/.default").token,
         )
 
         while True:
@@ -52,7 +49,13 @@ def main():
             print(completion.choices[0].message.content)
 
     except Exception as ex:
-        print(ex)
+        print(f"Error: {ex}")
+        print(f"Error type: {type(ex).__name__}")
+        
+        # Print environment variables for debugging
+        print(f"\nDebug info:")
+        print(f"AZURE_OPENAI_ENDPOINT: {os.getenv('AZURE_OPENAI_ENDPOINT')}")
+        print(f"MODEL_DEPLOYMENT: {os.getenv('MODEL_DEPLOYMENT')}")
 
 
 if __name__ == '__main__':
