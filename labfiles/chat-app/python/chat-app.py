@@ -33,17 +33,17 @@ def main():
                 print("Please enter a prompt.")
                 continue
 # Get a response
-response = openai_client.responses.create(
+            response = openai_client.responses.create(
              model=model_deployment,
              instructions="You are a helpful AI assistant that answers questions and provides information.",
              input=input_text
 )
-print(response.output_text)
+            print(response.output_text)
             
 
-    except Exception as ex:
-        print(f"Error: {ex}")
-        print(f"Error type: {type(ex).__name__}")
+            except Exception as ex:
+             print(f"Error: {ex}")
+             print(f"Error type: {type(ex).__name__}")
         
         # Print environment variables for debugging
         print(f"\nDebug info:")
