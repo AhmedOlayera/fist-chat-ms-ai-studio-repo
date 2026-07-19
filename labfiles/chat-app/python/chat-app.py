@@ -24,8 +24,9 @@ def main():
             azure_endpoint=project_connection,
             azure_ad_token_provider=lambda: DefaultAzureCredential().get_token("https://cognitiveservices.azure.com/.default").token,
         )
-# Track responses
-last_response_id = None
+        # Track responses
+        last_response_id = None
+
         while True:
             input_text = input("Enter the prompt (or type 'quit' to exit): ")
             if input_text.lower() == "quit":
@@ -39,8 +40,8 @@ last_response_id = None
                 instructions="You are a helpful AI assistant that answers questions and provides information.",
                 input=input_text,
                 previous_response_id=last_response_id,
- )
-        
+            )
+
             print(response.output_text)
             last_response_id = response.id
 
