@@ -32,16 +32,14 @@ def main():
             if len(input_text) == 0:
                 print("Please enter a prompt.")
                 continue
-
-            # Get a chat completion response
-            response = openai_client.chat.completions.create(
-                model=model_deployment,
-                messages=[
-                    {"role": "system", "content": "You are a helpful AI assistant that answers questions and provides information."},
-                    {"role": "user", "content": input_text},
-                ],
-            )
-            print(response.choices[0].message.content)
+# Get a response
+response = openai_client.responses.create(
+             model=model_deployment,
+             instructions="You are a helpful AI assistant that answers questions and provides information.",
+             input=input_text
+)
+print(response.output_text)
+            
 
     except Exception as ex:
         print(f"Error: {ex}")
