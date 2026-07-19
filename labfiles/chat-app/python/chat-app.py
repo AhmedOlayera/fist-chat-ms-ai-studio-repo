@@ -20,7 +20,7 @@ def main():
             raise ValueError("MODEL_DEPLOYMENT environment variable is not set")
 
         openai_client = AzureOpenAI(
-            api_version="2024-08-01-preview",
+            api_version="2025-03-01-preview",
             azure_endpoint=project_connection,
             azure_ad_token_provider=lambda: DefaultAzureCredential().get_token("https://cognitiveservices.azure.com/.default").token,
         )
@@ -33,15 +33,12 @@ def main():
                 print("Please enter a prompt.")
                 continue
 
-            # Get a chat completion response
-            response = openai_client.chat.completions.create(
+            response = openai_client.responses.create(
                 model=model_deployment,
-                messages=[
-                    {"role": "system", "content": "You are a helpful AI assistant that answers questions and provides information."},
-                    {"role": "user", "content": input_text},
-                ],
+                instructions="You are a helpful AI assistant that answers questions and provides information.",
+                input=input_text,
             )
-            print(response.choices[0].message.content)
+            print(response.output_text)
 
     except Exception as ex:
         print(f"Error: {ex}")
